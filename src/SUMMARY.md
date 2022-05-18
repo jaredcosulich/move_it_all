@@ -5,12 +5,12 @@
 
 # Move Language
 
+- [Best Practices](best-practices.md)
+- [Questions](questions.md)
 - [Resources](resources/index.md)
   - [Documentation](resources/documentation.md)
   - [Tutorials & Examples](resources/tutorials.md)
   - [Talks](resources/talks.md)
-- [Questions](questions.md)
-- [Best Practices](best-practices.md)
 
 # Extended Pages
 
