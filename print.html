@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="welcome.html">Welcome!</a></li><li class="chapter-item expanded affix "><a href="how-to-contribute.html">How To Contribute</a></li><li class="chapter-item expanded affix "><li class="part-title">Move Language</li><li class="chapter-item expanded "><a href="best-practices.html"><strong aria-hidden="true">1.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">2.</strong> Questions</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="resources/documentation.html"><strong aria-hidden="true">3.1.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="resources/tutorials.html"><strong aria-hidden="true">3.2.</strong> Tutorials & Examples</a></li><li class="chapter-item expanded "><a href="resources/talks.html"><strong aria-hidden="true">3.3.</strong> Talks</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Extended Pages</li><li class="chapter-item expanded "><a href="misc/move-documentation-comments.html"><strong aria-hidden="true">4.</strong> Move Documentation Comments</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="welcome.html">Welcome!</a></li><li class="chapter-item expanded affix "><a href="how-to-contribute.html">How To Contribute</a></li><li class="chapter-item expanded affix "><li class="part-title">Move Language</li><li class="chapter-item expanded "><a href="best-practices.html"><strong aria-hidden="true">1.</strong> Best Practices</a></li><li class="chapter-item expanded "><a href="questions.html"><strong aria-hidden="true">2.</strong> Questions</a></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="resources/documentation.html"><strong aria-hidden="true">3.1.</strong> Documentation</a></li><li class="chapter-item expanded "><a href="resources/tutorials.html"><strong aria-hidden="true">3.2.</strong> Tutorials & Examples</a></li><li class="chapter-item expanded "><a href="resources/talks.html"><strong aria-hidden="true">3.3.</strong> Talks</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -162,7 +162,9 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h1>
 <p>Need to add best practices here</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="questions"><a class="header" href="#questions">Questions</a></h1>
-<h3 id="what-is-the-best-way-to-handle-strings-in-move"><a class="header" href="#what-is-the-best-way-to-handle-strings-in-move">What is the best way to handle strings in Move?</a></h3>
+<h3 id="strings"><a class="header" href="#strings">Strings</a></h3>
+<details>
+<summary>How do you create strings in Move?</summary>
 <p>It's a bit hard to find in the documentation, but strings are handled as vectors that are defined inline and can be constructed via hexadecimal literal or bytestring literal of type <code>vector&lt;u8&gt;</code>:</p>
 <pre><code class="language-move">// These are both &quot;hello world&quot; strings
 
@@ -171,17 +173,24 @@ let hexStr = x&quot;68656c6c6f20776f726c64&quot;;
 let byteStr = b&quot;hello world&quot;;
 </code></pre>
 <p>In either case they are of type <code>vector&lt;u8&gt;</code></p>
-<p>More info here:
-(https://move-book.com/advanced-topics/managing-collections-with-vectors.html#hex-and-bytestring-literal-for-inline-vector-definitions)</p>
-<h3 id="what-is-the-best-way-to-handle-time-in-move"><a class="header" href="#what-is-the-best-way-to-handle-time-in-move">What is the best way to handle time in Move?</a></h3>
-<p>Answer provided by Sam Blackshear:</p>
+<p>More info on this can be found <a href="https://move-book.com/advanced-topics/managing-collections-with-vectors.html#hex-and-bytestring-literal-for-inline-vector-definitions">here</a></p>
+</details>
+<h3 id="time"><a class="header" href="#time">Time</a></h3>
+<details>
+<summary>What is the best way to handle time in Move?</summary>
+<p>This likely differs between blockchains that are leveraging Move.</p>
+<p>Here is an answer provided by Sam Blackshear regarding the Sui blockchain:</p>
 <blockquote>
 <p>For now, we only have a coarse notion of time available via epoch numbers. A new epoch begins every 24 hours.</p>
 <p>The current epoch number can be read in Move via <a href="https://github.com/MystenLabs/sui/blob/main/sui_programmability/framework/sources/Governance/SuiSystem.move#L262">SuiSystem::epoch:</a>, but we are working on making the epoch number readable from TxContext, which will be more convenient (<a href="https://github.com/MystenLabs/sui/issues/1980">https://github.com/MystenLabs/sui/issues/1980</a>).</p>
 <p>A finer-grained notion of time is coming, but will take a bit longer--follow <a href="https://github.com/MystenLabs/sui/issues/1696">https://github.com/MystenLabs/sui/issues/1696</a> for updates.</p>
 </blockquote>
-<h3 id="can-you-generate-a-random-number-in-move"><a class="header" href="#can-you-generate-a-random-number-in-move">Can you generate a random number in Move?</a></h3>
+</details>
+<h3 id="randomness"><a class="header" href="#randomness">Randomness</a></h3>
+<details>
+<summary>Can you generate a random number in Move?</summary>
 <p>In Move, like other smart contract languages, the contract needs to be deterministic (produce the same output for the same input every time). If you had a random value generated within the contract it would produce a different ouput for each input you provided and would not be deterministic. In order to use random values you need to provide them from outside the contract via parameters (i.e. pass in the random value).</p>
+</details>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="resources"><a class="header" href="#resources">Resources</a></h1>
 <p>We're trying to gather up the resources we can find on Move.</p>
 <ul>
@@ -228,7 +237,6 @@ let byteStr = b&quot;hello world&quot;;
 </ul>
 </li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="move-documentation-comments"><a class="header" href="#move-documentation-comments">Move Documentation Comments</a></h1>
 
                     </main>
 
