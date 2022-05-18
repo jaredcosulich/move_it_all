@@ -23,10 +23,10 @@ Answer provided by Sam Blackshear:
 
 > For now, we only have a coarse notion of time available via epoch numbers. A new epoch begins every 24 hours.
 >
-> The current epoch number can be read in Move via SuiSystem::epoch: https://github.com/MystenLabs/sui/blob/main/sui_programmability/framework/sources/Governance/SuiSystem.move#L262, but we are working on making the epoch number readable from TxContext, which will be more convenient (https://github.com/MystenLabs/sui/issues/1980).
+> The current epoch number can be read in Move via [SuiSystem::epoch:](https://github.com/MystenLabs/sui/blob/main/sui_programmability/framework/sources/Governance/SuiSystem.move#L262), but we are working on making the epoch number readable from TxContext, which will be more convenient ([https://github.com/MystenLabs/sui/issues/1980](https://github.com/MystenLabs/sui/issues/1980)).
 >
-> A finer-grained notion of time is coming, but will take a bit longer--follow https://github.com/MystenLabs/sui/issues/1696 for updates.
+> A finer-grained notion of time is coming, but will take a bit longer--follow [https://github.com/MystenLabs/sui/issues/1696](https://github.com/MystenLabs/sui/issues/1696) for updates.
 
 ### Can you generate a random number in Move?
 
-I have not verified this yet, but I'm guessing that in Move, like other smart contract languages that need to be deterministic (produce the same output for the same input every time), you can not have randomness within the contract. You would need to provide it from outside the contract via a parameter.
+In Move, like other smart contract languages, the contract needs to be deterministic (produce the same output for the same input every time). If you had a random value generated within the contract it would produce a different ouput for each input you provided and would not be deterministic. In order to use random values you need to provide them from outside the contract via parameters (i.e. pass in the random value).
