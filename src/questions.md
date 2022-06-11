@@ -18,6 +18,12 @@ let byteStr = b"hello world";
 In either case they are of type `vector<u8>`
 
 More info on this can be found [here](https://move-book.com/advanced-topics/managing-collections-with-vectors.html#hex-and-bytestring-literal-for-inline-vector-definitions)
+  
+It's also worth noting that any given implementation of Move might have a library for strings such as:
+  
+- Sui: [Ascii.move](https://github.com/MystenLabs/sui/blob/main/crates/sui-framework/deps/move-stdlib/sources/ascii.move)
+
+
 
 </details>
 
