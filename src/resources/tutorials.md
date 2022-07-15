@@ -4,6 +4,8 @@ It's important to note that different blockchains are leveraging Move differentl
 
 ### Sui
 
+- [Move By Example](https://examples.sui.io/)
+  - Numerous Sui Move examples
 - [Tic Tac Toe](https://github.com/diem/move/tree/main/language/documentation/tutorial)
   - An end-to-end tutorial on building a Tic Tac Toe game using Move.
 - [Sui Examples](https://docs.sui.io/explore/examples)
